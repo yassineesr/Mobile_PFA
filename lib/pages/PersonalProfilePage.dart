@@ -45,7 +45,14 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
       body:Center(
           child:Column(
             children: [
-                   Text(' nom: $nom_global \n prenom: $prenom_global \n email: $email_global \n numero: $num_global',
+
+              Text('Personal Information:',
+                   textScaleFactor: 2,
+                   
+                   ),
+                   SizedBox(height: 15.0),
+
+                   Text(' nom: $nom_global \n prenom: $prenom_global \n email: $email_global \n numero: $num_global \n adresse: $adr_global',
                    textScaleFactor: 2,
                    textAlign: TextAlign.justify,
                    
@@ -54,14 +61,14 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
                 onPressed: _generateQrCodefromGolbal,
                 child: Text('Generate QR Code'),
               ),
-              SizedBox(height: 16.0),
+              SizedBox(height: 15.0),
              
                 QrImage(
                   data: _qrCodeData,
                   version: QrVersions.auto,
                   size: 200.0,
                 ),
-
+                SizedBox(height: 40.0),
                 InkWell(
           onTap: () {
             Navigator.pop(context);

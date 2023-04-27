@@ -19,6 +19,7 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
 
+
   String _qrCodeData = "";
   @override
   Widget build(BuildContext context) {
@@ -47,18 +48,8 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
           key: _formKey,
           child: Column(
             children: [
-              TextFormField(
-                controller: _phoneController,
-                decoration: InputDecoration(
-                  labelText: 'Phone number',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your phone number';
-                  }
-                 
-                },
-              ),
+               
+
               TextFormField(
                 controller: _emailController,
                 decoration: InputDecoration(
@@ -71,6 +62,20 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
                   
                 },
               ),
+
+              TextFormField(
+                controller: _phoneController,
+                decoration: InputDecoration(
+                  labelText: 'Phone number',
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your phone number';
+                  }
+                 
+                },
+              ),
+              
               TextFormField(
                 controller: _addressController,
                 decoration: InputDecoration(
@@ -82,7 +87,13 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
                   }
                                 },
               ),
-              
+
+               
+
+              ElevatedButton(
+                onPressed: _generateQrCodefromGolbal,
+                child: Text('Valider'),
+              ),
                 
             ],
           ),
@@ -107,22 +118,24 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
 
 
   void _generateQrCodefromGolbal() {
-    String phoneNumber = "";
-      String email = "";
-      String nom1 = "";
-      String prenom1 = "";
+   
 
       setState(() {
-        nom1=nom_global;
-        prenom1=prenom_global;
-        email=email_global;
-        phoneNumber=num_global;
+        
+        email_global=_emailController.text;
+        num_global=_phoneController.text;
+        adr_global=_addressController.text;
       });
       
       setState(() {
-        _qrCodeData = "$nom1 $prenom1 $email $phoneNumber";
+        _qrCodeData = "$nom_global $prenom_global $email_global $num_global $num_global";
       });
-    
+    ScaffoldMessenger.of(context).showSnackBar(
+
+                                const SnackBar(content: Text("Valide"))
+
+                             );
+     FocusScope.of(context).requestFocus(FocusNode());//clavier goes down
   }
 }
 
