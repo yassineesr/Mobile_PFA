@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/pages/HomePage.dart';
 import 'package:flutter_application_3/pages/PersonalProfilePage.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../global_variables/global_variables.dart';
 
@@ -102,7 +103,7 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
     );
   }
 
-  void _generateQrCode() {
+/*  void _generateQrCode() {
     if (_formKey.currentState!.validate()) {
       String phoneNumber = _phoneController.text;
       String email = _emailController.text;
@@ -114,7 +115,7 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
       });
     }
   }
-
+*/
 
 
   void _generateQrCodefromGolbal() {
@@ -128,7 +129,7 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
       });
       
       setState(() {
-        _qrCodeData = "$nom_global $prenom_global $email_global $num_global $num_global";
+        _qrCodeData = "$nom_global $prenom_global $email_global $num_global $adr_global";
       });
     ScaffoldMessenger.of(context).showSnackBar(
 
