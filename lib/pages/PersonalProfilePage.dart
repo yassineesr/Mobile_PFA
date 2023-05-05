@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/pages/HomePage.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -57,6 +59,18 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
                    textAlign: TextAlign.justify,
                    
                    ),
+
+                      Container(
+                    width: 160,
+                    height: 160,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                        image: FileImage(File(image1.path)),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                        ),
                   ElevatedButton(
                 onPressed: _generateQrCodefromGolbal,
                 child: Text('Generate QR Code'),

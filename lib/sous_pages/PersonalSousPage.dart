@@ -1,3 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/pages/HomePage.dart';
 import 'package:flutter_application_3/pages/PersonalProfilePage.dart';
@@ -19,7 +24,8 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
-
+  
+  final image_picker=ImagePicker();
 
   String _qrCodeData = "";
   @override
@@ -92,9 +98,21 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
                
 
               ElevatedButton(
+                onPressed: (){
+                    showModalBottomSheet(context: context, builder:(((builder) => upload_choice())));
+
+
+
+                },
+                child: Text('upload'),
+              ),
+
+              ElevatedButton(
                 onPressed: _generateQrCodefromGolbal,
                 child: Text('Valider'),
               ),
+
+             
                 
             ],
           ),
@@ -138,5 +156,84 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
                              );
      FocusScope.of(context).requestFocus(FocusNode());//clavier goes down
   }
-}
 
+
+  void uppload_image( ImageSource usersource) async {
+    final pickedim= await image_picker.getImage(source: usersource);
+
+    setState(() {
+      if(pickedim!=null){
+     image1=pickedim;
+    }else{}
+
+    });
+
+  }
+
+   Widget upload_choice() {
+  return Container(
+    height: 100,
+    width: MediaQuery.of(context).size.width,
+    margin: const EdgeInsets.symmetric(
+      horizontal: 20,
+      vertical: 20,
+    ),
+    child: Column(
+      children: <Widget>[
+        Text(
+          'choose method',
+          style: TextStyle(
+            fontSize: 20,
+          ),
+        ),
+
+        SizedBox(height: 6),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            InkWell(onTap: () {
+
+              uppload_image( ImageSource.camera);
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 20.0,
+                child: Icon(Icons.camera_alt ,size: 40.0, color: Colors.white),
+              ),
+              SizedBox(height: 10.0), 
+             
+              Text('camera', style: TextStyle(fontSize: 18.0)),
+            ],
+          ),),
+
+            SizedBox(width: 70),
+
+          InkWell(onTap: () {
+
+            uppload_image( ImageSource.gallery);
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 20.0,
+                child: Icon(Icons.image ,size: 40.0, color: Colors.white),
+              ),
+              SizedBox(height: 10.0),
+              Text('gallery', style: TextStyle(fontSize: 18.0)),
+            ],
+          ),),
+
+       
+            
+
+
+          ],
+        ),
+      ],
+    ),
+  );
+}
+}
