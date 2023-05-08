@@ -63,7 +63,7 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
                       Container(
                     width: 160,
                     height: 160,
-                    decoration: BoxDecoration(
+                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       image: DecorationImage(
                         image: FileImage(File(image1.path)),
@@ -115,62 +115,7 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
       )
       
       
-      /* SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                controller: _phoneController,
-                decoration: InputDecoration(
-                  labelText: 'Phone number',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your phone number';
-                  }
-                 
-                },
-              ),
-              TextFormField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your email';
-                  }
-                  
-                },
-              ),
-              TextFormField(
-                controller: _addressController,
-                decoration: InputDecoration(
-                  labelText: 'Address',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your address';
-                  }
-                                },
-              ),
-              SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: _generateQrCode,
-                child: Text('Generate QR Code'),
-              ),
-              SizedBox(height: 16.0),
-             
-                QrImage(
-                  data: _qrCodeData,
-                  version: QrVersions.auto,
-                  size: 200.0,
-                ),
-            ],
-          ),
-        ),
-      ),*/
+     
     );
   }
 

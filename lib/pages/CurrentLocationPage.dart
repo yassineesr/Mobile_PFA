@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/global_variables/global_variables.dart';
+import 'package:flutter_application_3/sous_pages/CurrentLocSousPage.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -14,7 +16,10 @@ class CurrentLocationPage extends StatefulWidget {
 class _CurrentLocationPageState extends State<CurrentLocationPage> {
 String latitude= '';
   String longitude='';
-   final formkey=GlobalKey<FormState>();
+  String qrdata='';
+    String myGlobalString = '';
+    bool showQRCode = false;
+  /* final formkey=GlobalKey<FormState>();
     final scaffoldkey=GlobalKey<ScaffoldState>();
     final nomController=TextEditingController();
     final emailController=TextEditingController();
@@ -31,27 +36,10 @@ String latitude= '';
       emailController.dispose();
       numController.dispose();
 
-    }
+    }*/
 
     
-  void getlocation() async{
-
-    await Geolocator.checkPermission();
-    await Geolocator.requestPermission();
-      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-      latitude=position.latitude.toString();
-      longitude=position.longitude.toString();
-       print(latitude);
-      print(longitude);
-      ScaffoldMessenger.of(context).showSnackBar(
-
-                                const SnackBar(content: Text("location recupere"))
-
-                             );
-                             FocusScope.of(context).requestFocus(FocusNode());//clavier goes down
-  }
-
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,22 +62,116 @@ String latitude= '';
 
         ),
       ),
-      body: Center(
-        //child: _position!=null ? Text('current loc:$_position'): const Text('no location'),
-        /*child: Container(
-        
-          //child: ElevatedButton(onPressed: getlocation, child: const Text('get location'),)
-          
-          child: Column(
+      body: Center(child:Column(
             children: [
-              ElevatedButton(onPressed: getlocation, child: const Text('get location'),),
-              //ElevatedButton(onPressed: openMap, child: const Text('open location'),),
 
+              Text('Personal Information:',
+                   textScaleFactor: 2,
+                   
+                   ),
+                   SizedBox(height: 15.0),
+
+                   Text(' nom: $nom_global \n prenom: $prenom_global \n email: $email_global \n numero: $num_global ',
+                   textScaleFactor: 2,
+                   textAlign: TextAlign.justify,
+                   
+                   ),
+
+
+                    ElevatedButton(onPressed: getlocation , child: const Text('get location'), ),
+                    ElevatedButton(
+                        
+                        onPressed: () {
+                          
+                              String phoneNumber = "";
+                               String email = "";
+                               String nom1 = "";
+                               String prenom1 = "";
+
+                               setState(() {
+                                 nom1=nom_global;
+                                 prenom1=prenom_global;
+                                 email=email_global;
+                                 phoneNumber=num_global;
+                               });
+
+                               setState(() {
+                                 qrdata = "$nom1 $prenom1 $email $phoneNumber $latitude $longitude";
+                             });
+                        
+                        setState(() {
+                             showQRCode = !showQRCode;
+                                           });
+                        
+                        }, child: Text('qr code'),
+                        
+                        
+                        ),
+                  
+                            Visibility(
+                              visible: showQRCode,
+                              child:QrImage(
+                                backgroundColor: Colors.grey,
+                                  data: qrdata,
+                                      version: QrVersions.auto,
+                                        size: 200.0,
+                                  
+                                        
+                                
+                              ),    )  ,  
+                            
+              
+                  
+
+
+                    SizedBox(height: 25,),
+
+             
+
+
+
+                InkWell(
+          onTap: () {
+            Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CurrentLocSousPage()),
+                );
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 20.0,
+                child: Icon(Icons.account_circle,size: 40.0, color: Colors.white),
+              ),
+              SizedBox(height: 10.0),
+              Text('Current Profile', style: TextStyle(fontSize: 18.0)),
             ],
           ),
-          ),
-        */  
+        ),
+              SizedBox(height: 16.0),
+             
+
+            ],
+
+
+          )
+           
+
+      )
         
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        /*
+  
       child: Container(
           margin: const EdgeInsets.all(20),
             child :Form(
@@ -243,8 +325,34 @@ String latitude= '';
 
 
       ),
-    
+    */
       
     );
   }
+
+void getlocation() async{
+
+    await Geolocator.checkPermission();
+    await Geolocator.requestPermission();
+      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      latitude=position.latitude.toString();
+      longitude=position.longitude.toString();
+       print(latitude);
+      print(longitude);
+      ScaffoldMessenger.of(context).showSnackBar(
+
+                                const SnackBar(content: Text("location recupere"))
+
+                             );
+                             FocusScope.of(context).requestFocus(FocusNode());//clavier goes down
+  }
+
+
+
+
+
+
+
+
+
   }
