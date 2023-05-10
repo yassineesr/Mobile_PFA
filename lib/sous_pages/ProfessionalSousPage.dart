@@ -1,45 +1,42 @@
 // ignore_for_file: deprecated_member_use
 
-
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/pages/HomePage.dart';
-import 'package:flutter_application_3/pages/PersonalProfilePage.dart';
-import 'package:qr_flutter/qr_flutter.dart';
+import 'package:flutter_application_3/global_variables/global_variables.dart';
+import 'package:flutter_application_3/pages/ProfessionalProfilePage.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../global_variables/global_variables.dart';
 
-
-class PersonalSousPage extends StatefulWidget {
-  const PersonalSousPage({super.key});
+class ProfessionalSousPage extends StatefulWidget {
+  const ProfessionalSousPage({super.key});
 
   @override
-  State<PersonalSousPage> createState() => _PersonalSousPageState();
+  State<ProfessionalSousPage> createState() => _ProfessionalSousPageState();
 }
 
-class _PersonalSousPageState extends State<PersonalSousPage> {
+class _ProfessionalSousPageState extends State<ProfessionalSousPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
-  
-  final image_picker=ImagePicker();
 
   String _qrCodeData = "";
+
+  final image_picker=ImagePicker();
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PersonalSousPage'),
+        title: Text('ProfessionalSousPage'),
         centerTitle: true,
         leading: IconButton(
           onPressed: () { 
               Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => PersonalProfilePage()),
+                  MaterialPageRoute(builder: (context) => ProfessionalProfilePage()),
                 );
 
 
@@ -119,24 +116,11 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
         ),
       ),
     );
-  }
-
-/*  void _generateQrCode() {
-    if (_formKey.currentState!.validate()) {
-      String phoneNumber = _phoneController.text;
-      String email = _emailController.text;
-      String address = _addressController.text;
-      print(email);
-      print(address);
-      setState(() {
-        _qrCodeData = "$phoneNumber $email $address";
-      });
-    }
-  }
-*/
+ }
 
 
-  void _changeGolbalvariable() {
+
+void _changeGolbalvariable() {
    
 
       setState(() {
@@ -158,12 +142,13 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
   }
 
 
-  void uppload_image( ImageSource usersource) async {
-    final pickedim= await image_picker.getImage(source: usersource);
+void uppload_image( ImageSource usersource) async {
+   
+    final pickedim2= await image_picker.getImage(source: usersource);
 
     setState(() {
-      if(pickedim!=null){
-     image1=pickedim;
+      if(pickedim2!=null){
+     image2=pickedim2  ;
     }else{}
 
     });
@@ -193,7 +178,7 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
           children: <Widget>[
             InkWell(onTap: () {
 
-              uppload_image( ImageSource.camera);
+              uppload_image(ImageSource.camera);
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -236,4 +221,6 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
     ),
   );
 }
+
+
 }

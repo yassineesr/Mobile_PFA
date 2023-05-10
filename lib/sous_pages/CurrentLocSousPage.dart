@@ -76,7 +76,7 @@ class _CurrentLocSousPageState extends State<CurrentLocSousPage> {
           
 
               ElevatedButton(
-                onPressed: _generateQrCodefromGolbal,
+                onPressed: _changeGolbalvariable,
                 child: Text('Valider'),
               ),
 
@@ -92,7 +92,7 @@ class _CurrentLocSousPageState extends State<CurrentLocSousPage> {
 
 
 
-  void _generateQrCodefromGolbal() {
+  void _changeGolbalvariable() {
    
 
       setState(() {
@@ -103,7 +103,7 @@ class _CurrentLocSousPageState extends State<CurrentLocSousPage> {
       });
       
       setState(() {
-        _qrCodeData = "$nom_global $prenom_global $email_global $num_global $adr_global";
+        _qrCodeData = "$nom_global $prenom_global $email_global $num_global";
       });
     ScaffoldMessenger.of(context).showSnackBar(
 

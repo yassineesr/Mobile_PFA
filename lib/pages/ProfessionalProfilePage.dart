@@ -1,4 +1,9 @@
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/global_variables/global_variables.dart';
+import 'package:flutter_application_3/sous_pages/ProfessionalSousPage.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../main.dart';
@@ -39,75 +44,105 @@ class _ProfessionalProfilePageState extends State<ProfessionalProfilePage> {
 
         ),
       ),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
+      body: Center(
+          child:Column(
             children: [
-              TextFormField(
-                controller: _phoneController,
-                decoration: InputDecoration(
-                  labelText: 'Phone number',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your phone number';
-                  }
-                 
-                },
-              ),
-              TextFormField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your email';
-                  }
-                  
-                },
-              ),
-              TextFormField(
-                controller: _addressController,
-                decoration: InputDecoration(
-                  labelText: 'Address',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your address';
-                  }
-                                },
-              ),
-              SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: _generateQrCode,
+
+              Text('Personal Information:',
+                   textScaleFactor: 2,
+                   
+                   ),
+                   SizedBox(height: 15.0),
+
+                   Text(' nom: $nom_global \n prenom: $prenom_global \n email: $email_global_Profs \n numero: $num_global_Profs \n adresse: $adr_global_Profs',
+                   textScaleFactor: 2,
+                   textAlign: TextAlign.justify,
+                   
+                   ),
+
+                      Container(
+                    width: 300,
+                    height: 170,
+                   decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(0),
+                      image: DecorationImage(
+                        image: FileImage(File(image2.path)),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                        ),
+                        SizedBox(height: 10.0),
+                  ElevatedButton(
+                onPressed: _generateQrCodefromGolbal,
                 child: Text('Generate QR Code'),
               ),
-              SizedBox(height: 16.0),
+              SizedBox(height: 15.0),
              
                 QrImage(
                   data: _qrCodeData,
                   version: QrVersions.auto,
                   size: 200.0,
                 ),
+                SizedBox(height: 20.0),
+                InkWell(
+          onTap: () {
+            Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfessionalSousPage()),
+                );
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 20.0,
+                child: Icon(Icons.account_circle,size: 40.0, color: Colors.white),
+              ),
+              SizedBox(height: 10.0),
+              Text('Professional Profile', style: TextStyle(fontSize: 18.0)),
             ],
           ),
         ),
-      ),
+              SizedBox(height: 16.0),
+             
+
+            ],
+
+
+          )
+           
+
+      )
+     
     );
   }
 
-  void _generateQrCode() {
-    if (_formKey.currentState!.validate()) {
-      String phoneNumber = _phoneController.text;
-      String email = _emailController.text;
-      String address = _addressController.text;
-      print(email);
-      print(address);
+
+
+
+
+  void _generateQrCodefromGolbal() {
+    String phoneNumber = "";
+      String email = "";
+      String nom1 = "";
+      String prenom1 = "";
+      String adresse = "";
+
       setState(() {
-        _qrCodeData = "$phoneNumber $email $address";
+        nom1=nom_global;
+        prenom1=prenom_global;
+        email=email_global_Profs;
+        phoneNumber=num_global_Profs;
+        adresse=adr_global_Profs;
       });
-    }
+      
+      setState(() {
+        _qrCodeData = "$nom1 $prenom1 $email $phoneNumber $adresse ";
+      });
+    
   }
+
+
+
 }
