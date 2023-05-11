@@ -25,99 +25,79 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Personal Profile'),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () { 
+        appBar: AppBar(
+          title: Text('Personal Profile'),
+          centerTitle: true,
+          leading: IconButton(
+            onPressed: () {
               Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                );
-
-
-           },
-          icon: Icon(Icons.home),
-
-
-
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
+            },
+            icon: Icon(Icons.home),
+          ),
         ),
-      ),
-      body:Center(
-          child:Column(
-            children: [
-
-              Text('Personal Information:',
-                   textScaleFactor: 2,
-                   
-                   ),
-                   SizedBox(height: 15.0),
-
-                   Text(' nom: $nom_global \n prenom: $prenom_global \n email: $email_global \n numero: $num_global \n adresse: $adr_global',
-                   textScaleFactor: 2,
-                   textAlign: TextAlign.justify,
-                   
-                   ),
-
-                      Container(
-                    width: 300,
-                    height: 170,
-                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(0),
-                      image: DecorationImage(
-                        image: FileImage(File(image1.path)),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                        ),
-                        SizedBox(height: 10.0),
-                  ElevatedButton(
-                onPressed: _generateQrCodefromGolbal,
-                child: Text('Generate QR Code'),
-              ),
-              SizedBox(height: 15.0),
-             
-                QrImage(
-                  data: _qrCodeData,
-                  version: QrVersions.auto,
-                  size: 200.0,
+        body: Center(
+            child: Column(
+          children: [
+            Text(
+              'Personal Information:',
+              textScaleFactor: 2,
+            ),
+            SizedBox(height: 15.0),
+            Text(
+              ' nom: $nom_global \n prenom: $prenom_global \n email: $email_global \n numero: $num_global \n adresse: $adr_global',
+              textScaleFactor: 2,
+              textAlign: TextAlign.justify,
+            ),
+            Container(
+              width: 160,
+              height: 160,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                image: DecorationImage(
+                  image: FileImage(File(image1.path)),
+                  fit: BoxFit.cover,
                 ),
-                SizedBox(height: 20.0),
-                InkWell(
-          onTap: () {
-            Navigator.pop(context);
+              ),
+            ),
+            ElevatedButton(
+              onPressed: _generateQrCodefromGolbal,
+              child: Text('Generate QR Code'),
+            ),
+            SizedBox(height: 15.0),
+            QrImage(
+              data: _qrCodeData,
+              version: QrVersions.auto,
+              size: 200.0,
+            ),
+            SizedBox(height: 40.0),
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => PersonalSousPage()),
                 );
-          },
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 20.0,
-                child: Icon(Icons.account_circle,size: 40.0, color: Colors.white),
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 20.0,
+                    child: Icon(Icons.account_circle,
+                        size: 40.0, color: Colors.white),
+                  ),
+                  SizedBox(height: 10.0),
+                  Text('Personal Profile', style: TextStyle(fontSize: 18.0)),
+                ],
               ),
-              SizedBox(height: 10.0),
-              Text('Personal Profile', style: TextStyle(fontSize: 18.0)),
-            ],
-          ),
-        ),
-              SizedBox(height: 16.0),
-             
-
-            ],
-
-
-          )
-           
-
-      )
-      
-      
-     
-    );
+            ),
+            SizedBox(height: 16.0),
+          ],
+        )));
   }
 
   void _generateQrCode() {
@@ -133,24 +113,21 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
     }
   }
 
-
-
   void _generateQrCodefromGolbal() {
     String phoneNumber = "";
-      String email = "";
-      String nom1 = "";
-      String prenom1 = "";
+    String email = "";
+    String nom1 = "";
+    String prenom1 = "";
 
-      setState(() {
-        nom1=nom_global;
-        prenom1=prenom_global;
-        email=email_global;
-        phoneNumber=num_global;
-      });
-      
-      setState(() {
-        _qrCodeData = "$nom1 $prenom1 $email $phoneNumber";
-      });
-    
+    setState(() {
+      nom1 = nom_global;
+      prenom1 = prenom_global;
+      email = email_global;
+      phoneNumber = num_global;
+    });
+
+    setState(() {
+      _qrCodeData = "$nom1 $prenom1 $email $phoneNumber";
+    });
   }
-  }
+}
