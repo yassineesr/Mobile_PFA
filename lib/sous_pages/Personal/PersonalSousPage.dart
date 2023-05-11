@@ -1,15 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
 
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/pages/HomePage.dart';
+import 'package:flutter_application_3/global_variables/global_variables.dart';
 import 'package:flutter_application_3/pages/PersonalProfilePage.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../global_variables/global_variables.dart';
 
 
 class PersonalSousPage extends StatefulWidget {
@@ -32,7 +29,7 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PersonalSousPage'),
+        title: Text('Change informations'),
         centerTitle: true,
         leading: IconButton(
           onPressed: () { 
@@ -121,19 +118,7 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
     );
   }
 
-/*  void _generateQrCode() {
-    if (_formKey.currentState!.validate()) {
-      String phoneNumber = _phoneController.text;
-      String email = _emailController.text;
-      String address = _addressController.text;
-      print(email);
-      print(address);
-      setState(() {
-        _qrCodeData = "$phoneNumber $email $address";
-      });
-    }
-  }
-*/
+
 
 
   void _changeGolbalvariable() {
@@ -141,9 +126,9 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
 
       setState(() {
         
-        email_global_Profs=_emailController.text;
-        num_global_Profs=_phoneController.text;
-        adr_global_Profs=_addressController.text;
+        email_global=_emailController.text;
+        num_global=_phoneController.text;
+        adr_global=_addressController.text;
       });
       
       setState(() {

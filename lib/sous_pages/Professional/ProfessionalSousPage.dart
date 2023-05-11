@@ -29,7 +29,7 @@ class _ProfessionalSousPageState extends State<ProfessionalSousPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ProfessionalSousPage'),
+        title: Text('Change informations'),
         centerTitle: true,
         leading: IconButton(
           onPressed: () { 

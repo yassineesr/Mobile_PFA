@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'QuickLinker',
       theme: ThemeData(
+        primarySwatch: Colors.green,
+        accentColor: Colors.white,
+        
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
           color: Colors.green,

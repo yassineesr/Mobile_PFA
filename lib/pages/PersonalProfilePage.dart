@@ -1,11 +1,17 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/global_variables/global_variables.dart';
 import 'package:flutter_application_3/pages/HomePage.dart';
+import 'package:flutter_application_3/sous_pages/Personal/PersonalDisplay.dart';
+import 'package:flutter_application_3/sous_pages/Personal/PersonalSousPage.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
-import '../global_variables/global_variables.dart';
-import '../sous_pages/PersonalSousPage.dart';
+
+
 
 class PersonalProfilePage extends StatefulWidget {
   const PersonalProfilePage({super.key});
@@ -21,6 +27,7 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
   final TextEditingController _addressController = TextEditingController();
 
   String _qrCodeData = "";
+   bool showQRCode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -28,76 +35,132 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
         appBar: AppBar(
           title: Text('Personal Profile'),
           centerTitle: true,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomePage()),
-              );
-            },
-            icon: Icon(Icons.home),
-          ),
+         
         ),
         body: Center(
             child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+
           children: [
-            Text(
-              'Personal Information:',
-              textScaleFactor: 2,
-            ),
-            SizedBox(height: 15.0),
-            Text(
-              ' nom: $nom_global \n prenom: $prenom_global \n email: $email_global \n numero: $num_global \n adresse: $adr_global',
-              textScaleFactor: 2,
-              textAlign: TextAlign.justify,
-            ),
-            Container(
-              width: 160,
-              height: 160,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                image: DecorationImage(
-                  image: FileImage(File(image1.path)),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            SizedBox(height: 10.0),
             ElevatedButton(
               onPressed: _generateQrCodefromGolbal,
               child: Text('Generate QR Code'),
             ),
             SizedBox(height: 15.0),
-            QrImage(
+
+            Visibility(
+              visible: showQRCode, 
+              
+              child: QrImage(
               data: _qrCodeData,
               version: QrVersions.auto,
               size: 200.0,
             ),
-            SizedBox(height: 40.0),
-            InkWell(
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => PersonalSousPage()),
-                );
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 20.0,
-                    child: Icon(Icons.account_circle,
-                        size: 40.0, color: Colors.white),
-                  ),
-                  SizedBox(height: 10.0),
-                  Text('Personal Profile', style: TextStyle(fontSize: 18.0)),
-                ],
-              ),
             ),
-            SizedBox(height: 16.0),
+            
+            
+          
+
+            
+
           ],
-        )));
+        )), 
+        
+        bottomNavigationBar:  Container(
+          color: Colors.green,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            child: GNav(
+               gap: 8, // the tab button gap between icon and text 
+               backgroundColor: Colors.green,
+               color: Colors.white,
+               activeColor: Colors.white, // selected icon and text color
+               tabBackgroundColor: Colors.grey, // selected tab background color
+               padding: EdgeInsets.all(16),
+               selectedIndex: 1,
+               
+               
+               
+              tabs:  [
+                
+                
+            
+                GButton(
+                  icon: Icons.info,
+                  text: 'infos',
+                  onPressed: () {
+
+
+                    Future.delayed(Duration(milliseconds: 500), () {
+                             Navigator.pop(context);
+                             Navigator.push(
+                               context,
+                               MaterialPageRoute(builder: (context) => PersonalSousPage()),
+                             );
+                           });
+                      
+              },
+                  
+                  
+                  ),
+
+
+
+                      GButton(
+                  icon: Icons.home,
+                  text: 'home',
+                  onPressed: () {
+                    
+                      Future.delayed(Duration(milliseconds: 500), () {
+                             Navigator.pop(context);
+                             Navigator.push(
+                               context,
+                               MaterialPageRoute(builder: (context) => HomePage()),
+                             );
+                           });
+            },
+                  
+                  
+                  
+                  ),
+          
+          
+                  GButton(
+                  icon: Icons.list,
+                  text: 'Display',
+                   onPressed: () {
+
+                     Future.delayed(Duration(milliseconds: 500), () {
+                             Navigator.pop(context);
+                             Navigator.push(
+                               context,
+                               MaterialPageRoute(builder: (context) => PersonalDisplay()),
+                             );
+                           });
+                      
+              },
+
+              
+                  
+                  
+                  
+                  ),
+          
+          
+          
+          
+            ],
+          
+          
+          
+          
+            ),
+          ),
+        ),
+        
+        
+        );
   }
 
   void _generateQrCode() {
@@ -129,5 +192,17 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
     setState(() {
       _qrCodeData = "$nom1 $prenom1 $email $phoneNumber";
     });
+
+       setState(() {
+                  showQRCode = !showQRCode;
+                });
+    
+
+
   }
+
+
+
+
+  
 }

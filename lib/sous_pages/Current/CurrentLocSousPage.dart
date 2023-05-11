@@ -22,7 +22,7 @@ class _CurrentLocSousPageState extends State<CurrentLocSousPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('CurrentSousPage'),
+        title: Text('Changer Informations'),
         centerTitle: true,
         leading: IconButton(
           onPressed: () { 
@@ -97,13 +97,13 @@ class _CurrentLocSousPageState extends State<CurrentLocSousPage> {
 
       setState(() {
         
-        email_global=_emailController.text;
-        num_global=_phoneController.text;
+        email_global_Cur=_emailController.text;
+        num_global_Cur=_phoneController.text;
         
       });
       
       setState(() {
-        _qrCodeData = "$nom_global $prenom_global $email_global $num_global";
+        _qrCodeData = "$nom_global $prenom_global $email_global_Cur $num_global_Cur";
       });
     ScaffoldMessenger.of(context).showSnackBar(
 

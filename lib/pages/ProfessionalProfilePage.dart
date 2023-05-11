@@ -3,7 +3,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/global_variables/global_variables.dart';
-import 'package:flutter_application_3/sous_pages/ProfessionalSousPage.dart';
+import 'package:flutter_application_3/sous_pages/Professional/ProfessionalDisplay.dart';
+import 'package:flutter_application_3/sous_pages/Professional/ProfessionalSousPage.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../main.dart';
@@ -21,6 +23,7 @@ class _ProfessionalProfilePageState extends State<ProfessionalProfilePage> {
   final TextEditingController _addressController = TextEditingController();
 
   String _qrCodeData = "";
+  bool showQRCode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -28,92 +31,136 @@ class _ProfessionalProfilePageState extends State<ProfessionalProfilePage> {
       appBar: AppBar(
         title: Text('Professional Profile'),
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () { 
-              Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                );
-
-
-           },
-          icon: Icon(Icons.home),
-
-
-
-        ),
       ),
       body: Center(
-          child:Column(
-            children: [
-
-              Text('Personal Information:',
-                   textScaleFactor: 2,
-                   
-                   ),
-                   SizedBox(height: 15.0),
-
-                   Text(' nom: $nom_global \n prenom: $prenom_global \n email: $email_global_Profs \n numero: $num_global_Profs \n adresse: $adr_global_Profs',
-                   textScaleFactor: 2,
-                   textAlign: TextAlign.justify,
-                   
-                   ),
-
-                      Container(
-                    width: 300,
-                    height: 170,
-                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(0),
-                      image: DecorationImage(
-                        image: FileImage(File(image2.path)),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                        ),
-                        SizedBox(height: 10.0),
-                  ElevatedButton(
-                onPressed: _generateQrCodefromGolbal,
-                child: Text('Generate QR Code'),
-              ),
-              SizedBox(height: 15.0),
-             
-                QrImage(
-                  data: _qrCodeData,
-                  version: QrVersions.auto,
-                  size: 200.0,
-                ),
-                SizedBox(height: 20.0),
-                InkWell(
-          onTap: () {
-            Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfessionalSousPage()),
-                );
-          },
-          child: Column(
+            child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 20.0,
-                child: Icon(Icons.account_circle,size: 40.0, color: Colors.white),
+
+          children: [
+            SizedBox(height: 10.0),
+            ElevatedButton(
+              onPressed: _generateQrCodefromGolbal,
+              child: Text('Generate QR Code'),
+            ),
+            SizedBox(height: 15.0),
+
+            Visibility(
+              visible: showQRCode, 
+              
+              child: QrImage(
+              data: _qrCodeData,
+              version: QrVersions.auto,
+              size: 200.0,
+            ),
+              
+              
+              
+              
               ),
-              SizedBox(height: 10.0),
-              Text('Professional Profile', style: TextStyle(fontSize: 18.0)),
+            
+            
+          
+
+            
+
+          ],
+        )),
+
+
+        bottomNavigationBar:  Container(
+          color: Colors.green,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            child: GNav(
+               gap: 8, // the tab button gap between icon and text 
+               backgroundColor: Colors.green,
+               color: Colors.white,
+               activeColor: Colors.white, // selected icon and text color
+               tabBackgroundColor: Colors.grey, // selected tab background color
+               padding: EdgeInsets.all(16),
+               selectedIndex: 1,
+               
+               
+               
+              tabs:  [
+                
+                
+            
+                GButton(
+                  icon: Icons.info,
+                  text: 'infos',
+                  onPressed: () {
+
+
+                    Future.delayed(Duration(milliseconds: 500), () {
+                             Navigator.pop(context);
+                             Navigator.push(
+                               context,
+                               MaterialPageRoute(builder: (context) => ProfessionalSousPage()),
+                             );
+                           });
+                      
+              },
+                  
+                  
+                  ),
+
+
+
+                      GButton(
+                  icon: Icons.home,
+                  text: 'home',
+                  onPressed: () {
+                    
+                      Future.delayed(Duration(milliseconds: 500), () {
+                             Navigator.pop(context);
+                             Navigator.push(
+                               context,
+                               MaterialPageRoute(builder: (context) => HomePage()),
+                             );
+                           });
+            },
+                  
+                  
+                  
+                  ),
+          
+          
+                  GButton(
+                  icon: Icons.list,
+                  text: 'Display',
+                   onPressed: () {
+
+                     Future.delayed(Duration(milliseconds: 500), () {
+                             Navigator.pop(context);
+                             Navigator.push(
+                               context,
+                               MaterialPageRoute(builder: (context) => ProfessionalDisplay()),
+                             );
+                           });
+                      
+              },
+
+              
+                  
+                  
+                  
+                  ),
+          
+          
+          
+          
             ],
+          
+          
+          
+          
+            ),
           ),
         ),
-              SizedBox(height: 16.0),
-             
+        
+        
 
-            ],
-
-
-          )
-           
-
-      )
      
     );
   }
@@ -140,6 +187,10 @@ class _ProfessionalProfilePageState extends State<ProfessionalProfilePage> {
       setState(() {
         _qrCodeData = "$nom1 $prenom1 $email $phoneNumber $adresse ";
       });
+
+       setState(() {
+                  showQRCode = !showQRCode;
+                });
     
   }
 

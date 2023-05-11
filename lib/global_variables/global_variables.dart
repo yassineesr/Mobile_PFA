@@ -1,6 +1,5 @@
 library my_globals;
 
-import 'dart:io';
 
 import 'package:image_picker/image_picker.dart';
 
@@ -15,7 +14,14 @@ String email_global_Profs = "yas@gmail.com";
 String num_global_Profs = "066666666";
 String adr_global_Profs = "casablanca";
 
+String email_global_Cur = "ismail@gmail.com";
+String num_global_Cur = "066666";
+String latitude_Cur = '';
+  String longitude_Cur = '';
+
+
+
 late PickedFile image1 =
-    PickedFile('/Users/zk/Mobile_PFA/assets/marrakech.jpg');
+    PickedFile('D:/flutter_apps/flutter_application_version3/flutter_application_3/assets/marrakech.jpg');
 late PickedFile image2 =
-    PickedFile('/Users/zk/Mobile_PFA/assets/marrakech.jpg');
+    PickedFile('D:/flutter_apps/flutter_application_version3/flutter_application_3/assets/marrakech.jpg');

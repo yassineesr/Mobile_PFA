@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/global_variables/global_variables.dart';
 import 'package:flutter_application_3/pages/HomePage.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -16,6 +17,8 @@ class _OtherPageState extends State<OtherPage> {
   final TextEditingController _addressController = TextEditingController();
 
   String _qrCodeData = "";
+  bool showQRCode = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,12 +87,16 @@ class _OtherPageState extends State<OtherPage> {
                 child: Text('Generate QR Code'),
               ),
               SizedBox(height: 16.0),
-             
-                QrImage(
+
+             Visibility(
+              visible: showQRCode, 
+              child: QrImage(
                   data: _qrCodeData,
                   version: QrVersions.auto,
                   size: 200.0,
                 ),
+                ),
+                
             ],
           ),
         ),
@@ -102,11 +109,16 @@ class _OtherPageState extends State<OtherPage> {
       String phoneNumber = _phoneController.text;
       String email = _emailController.text;
       String address = _addressController.text;
-      print(email);
-      print(address);
       setState(() {
-        _qrCodeData = "$phoneNumber $email $address";
+        _qrCodeData = "$nom_global $prenom_global $phoneNumber $email $address";
       });
+
+      setState(() {
+                  showQRCode = !showQRCode;
+                });
+
+
+
     }
   }
 }
