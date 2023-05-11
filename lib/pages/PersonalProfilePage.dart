@@ -61,16 +61,17 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
                    ),
 
                       Container(
-                    width: 160,
-                    height: 160,
+                    width: 300,
+                    height: 170,
                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(0),
                       image: DecorationImage(
                         image: FileImage(File(image1.path)),
                         fit: BoxFit.cover,
                       ),
                     ),
                         ),
+                        SizedBox(height: 10.0),
                   ElevatedButton(
                 onPressed: _generateQrCodefromGolbal,
                 child: Text('Generate QR Code'),
@@ -82,7 +83,7 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
                   version: QrVersions.auto,
                   size: 200.0,
                 ),
-                SizedBox(height: 40.0),
+                SizedBox(height: 20.0),
                 InkWell(
           onTap: () {
             Navigator.pop(context);
