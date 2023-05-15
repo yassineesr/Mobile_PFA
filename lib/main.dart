@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'QuickLinker',
       theme: ThemeData(
         primarySwatch: Colors.green,
-        accentColor: Colors.white,
+        hintColor: Colors.white,
         
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(

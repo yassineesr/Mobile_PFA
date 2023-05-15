@@ -22,6 +22,6 @@ String latitude_Cur = '';
 
 
 late PickedFile image1 =
-    PickedFile('D:/flutter_apps/flutter_application_version3/flutter_application_3/assets/marrakech.jpg');
+    PickedFile('/Users/zk/Mobile_PFA/assets/marrakech.jpg');
 late PickedFile image2 =
-    PickedFile('D:/flutter_apps/flutter_application_version3/flutter_application_3/assets/marrakech.jpg');
+    PickedFile('/Users/zk/Mobile_PFA/assets/marrakech.jpg');

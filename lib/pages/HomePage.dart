@@ -32,155 +32,213 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
+      body: Container(
+        padding: EdgeInsets.all(16.0),
         child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-       
-          
-           Row(
-      
-     mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        InkWell(
-          onTap: () {
-            Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfessionalProfilePage()),
-                );
-          },
-          child: Column(
-            children: [
-              CircleAvatar(
-                radius: 40.0,
-                child: Icon(Icons.account_circle,size: 80.0, color: Colors.white),
-              ),
-              SizedBox(height: 10.0),
-              Text('Professional Profile', style: TextStyle(fontSize: 18.0)),
-            ],
-          ),
+          children: [
+            SizedBox(height: 32.0),
+            Row(
+              children: [
+                Expanded(
+                  child: CircleAvatar(
+                    radius: 60.0,
+                    backgroundImage:
+                        NetworkImage('https://picsum.photos/200?random=1'),
+                  ),
+                ),
+                SizedBox(width: 16.0),
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 8.0),
+                      Text(
+                        'John Doe',
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        'Email: johndoe@gmail.com',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
+                      SizedBox(height: 8.0),
+                      Text(
+                        'Subscription: Premium',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 32.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfessionalProfilePage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.redAccent,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.account_circle,
+                            size: 80.0,
+                            color: Colors.white,
+                          ),
+                          SizedBox(height: 16.0),
+                          Text(
+                            'Professional Profile',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 16.0),
+                Expanded(
+                  flex: 2,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PersonalProfilePage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.blueAccent,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.account_circle,
+                            size: 80.0,
+                            color: Colors.white,
+                          ),
+                          SizedBox(height: 16.0),
+                          Text(
+                            'Personal Profile',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 16.0),
+                Expanded(
+                  flex: 2,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => OtherPage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.greenAccent,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.bookmark_border,
+                            size: 80.0,
+                            color: Colors.white,
+                          ),
+                          SizedBox(height: 16.0),
+                          Text(
+                            'Other Page',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 16.0),
+                Expanded(
+                  flex: 2,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CurrentLocationPage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.purpleAccent,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.location_on,
+                            size: 80.0,
+                            color: Colors.white,
+                          ),
+                          SizedBox(height: 16.0),
+                          Text(
+                            'Current Location',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
-        InkWell(
-          onTap: () {
-            Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => PersonalProfilePage()),
-                );
-          },
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 40.0,
-                child: Icon(Icons.account_circle,size: 80.0, color: Colors.white),
-              ),
-              SizedBox(height: 10.0),
-              Text('Personal Profile', style: TextStyle(fontSize: 18.0)),
-            ],
-          ),
-        ),
-      ],
-    ),
-
- SizedBox(height: 20.0),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-      
-      children: [
-        InkWell(
-          onTap: () {
-
-            Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CurrentLocationPage()),
-                );
-            
-          },
-          child: Column(
-            children: [
-              CircleAvatar(
-                radius: 40.0,
-                child: Icon(Icons.account_circle,size: 80.0, color: Colors.white),
-              ),
-              SizedBox(height: 10.0),
-              Text('Current Location', style: TextStyle(fontSize: 18.0)),
-            ],
-          ),
-        ),
-        InkWell(
-          onTap: () {
-
-
-            Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => OtherPage()),
-                );
-            
-          },
-          child: Column(
-            children: [
-              CircleAvatar(
-                radius: 40.0,
-                child: Icon(Icons.account_circle,size: 80.0, color: Colors.white),
-              ),
-              SizedBox(height: 10.0),
-              Text('other', style: TextStyle(fontSize: 18.0)),
-            ],
-          ),
-        ),
-
-      
-      
-      ],
-    
-        
-        ),
-
-
-
-        SizedBox(height: 20.0),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-      
-      children: [
-        InkWell(
-          onTap: () {
-
-            Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => QrScanner()),
-                );
-            
-          },
-          child: Column(
-            children: [
-              CircleAvatar(
-                radius: 40.0,
-                child: Icon(Icons.qr_code_scanner_rounded,size: 80.0, color: Colors.white),
-              ),
-              SizedBox(height: 10.0),
-              Text('Qr code scanner', style: TextStyle(fontSize: 18.0)),
-            ],
-          ),
-        ),
-      
-      
-      ],
-    
-        
-        ),
-
-
-        
-        
-
-      
-  ])
-   ), );
+      ),
+    );
   }
 }
