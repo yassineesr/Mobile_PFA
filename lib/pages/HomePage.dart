@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-            SizedBox(height: 32.0),
+            SizedBox(height: 48.0),
             Row(
               children: [
                 Expanded(
@@ -131,7 +131,7 @@ class HomePage extends StatelessWidget {
                       );
                     },
                     child: Container(
-                      decoration: BoxDecoration(
+                                            decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
                         color: Colors.blueAccent,
                       ),
@@ -242,3 +242,5 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+                     
