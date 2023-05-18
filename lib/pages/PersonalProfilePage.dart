@@ -181,16 +181,18 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
     String email = "";
     String nom1 = "";
     String prenom1 = "";
+    String adress1 = "";
 
     setState(() {
-      nom1 = nom_global;
-      prenom1 = prenom_global;
+      nom1 = nom_global_pers;
+      prenom1 = prenom_global_pers;
       email = email_global;
       phoneNumber = num_global;
+      adress1=adr_global;
     });
 
     setState(() {
-      _qrCodeData = "$nom1 $prenom1 $email $phoneNumber";
+      _qrCodeData = "$nom1 $prenom1 $email $phoneNumber $adress1";
     });
 
        setState(() {

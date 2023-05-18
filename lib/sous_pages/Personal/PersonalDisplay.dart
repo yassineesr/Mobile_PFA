@@ -57,8 +57,8 @@ class _PersonalDisplayState extends State<PersonalDisplay> {
             ),
             SizedBox(height: 15.0),
             Text(
-              'Nom: $nom_global\n'
-              'Prenom: $prenom_global\n'
+              'Nom: $nom_global_pers\n'
+              'Prenom: $prenom_global_pers\n'
               'Email: $email_global\n'
               'Numero: $num_global\n'
               'Addresse: $adr_global\n'

@@ -6,6 +6,9 @@ import 'package:image_picker/image_picker.dart';
 String nom_global = "esslassi";
 String prenom_global = "zaksss";
 
+String nom_global_pers = "esslassi";
+String prenom_global_pers = "zaksss";
+
 String email_global = "yassine@gmail.com";
 String num_global = "066666";
 String adr_global = "Casablaca";

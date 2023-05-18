@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/global_variables/global_variables.dart';
+import 'package:flutter_application_3/pages/LoginPage.dart';
 import 'package:flutter_application_3/pages/PersonalProfilePage.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -21,6 +22,8 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
+  final TextEditingController nameController= TextEditingController();
+  final TextEditingController lastNameController= TextEditingController();
   
   final image_picker=ImagePicker();
 
@@ -53,6 +56,32 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
           child: Column(
             children: [
                
+               TextFormField(
+                controller: nameController,
+                decoration: InputDecoration(
+                  labelText: 'First Name',
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your First name';
+                  }
+                  
+                },
+              ),
+
+              TextFormField(
+                controller: lastNameController,
+                decoration: InputDecoration(
+                  labelText: 'Last Name',
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your Last name';
+                  }
+                  
+                },
+              ),
+
 
               TextFormField(
                 controller: _emailController,
@@ -129,10 +158,12 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
         email_global=_emailController.text;
         num_global=_phoneController.text;
         adr_global=_addressController.text;
+        nom_global_pers=lastNameController.text;
+        prenom_global_pers=nameController.text;
       });
       
       setState(() {
-        _qrCodeData = "$nom_global $prenom_global $email_global_Profs $num_global_Profs $adr_global_Profs";
+        _qrCodeData = "$nom_global_pers $prenom_global_pers $email_global $num_global $adr_global";
       });
     ScaffoldMessenger.of(context).showSnackBar(
 
