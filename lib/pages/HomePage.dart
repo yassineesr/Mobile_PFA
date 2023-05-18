@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/global_variables/global_variables.dart';
 import 'package:flutter_application_3/pages/CurrentLocationPage.dart';
+import 'package:flutter_application_3/pages/LoginPage.dart';
 import 'package:flutter_application_3/pages/OtherPage.dart';
 import 'package:flutter_application_3/pages/PersonalProfilePage.dart';
 import 'package:flutter_application_3/pages/ProfessionalProfilePage.dart';
@@ -20,9 +22,10 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
+                Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ContactPage()),
+                  MaterialPageRoute(builder: (context) => LoginPage()),
                 );
               },
               child: CircleAvatar(
@@ -54,7 +57,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       SizedBox(height: 8.0),
                       Text(
-                        'John Doe',
+                        '$usrname',
                         style: TextStyle(
                           fontSize: 24.0,
                           fontWeight: FontWeight.bold,
@@ -62,7 +65,7 @@ class HomePage extends StatelessWidget {
                       ),
                       SizedBox(height: 8.0),
                       Text(
-                        'Email: johndoe@gmail.com',
+                        'Email: $mailUser',
                         style: TextStyle(fontSize: 16.0),
                       ),
                       SizedBox(height: 8.0),

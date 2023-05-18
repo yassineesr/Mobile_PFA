@@ -19,9 +19,15 @@ String num_global_Cur = "066666";
 String latitude_Cur = '';
   String longitude_Cur = '';
 
+String usrname="";
+String mailUser="";
 
+ List <dynamic> ListeComptesUsers=[];
 
+ int globalID=0;
 late PickedFile image1 =
     PickedFile('/Users/zk/Mobile_PFA/assets/marrakech.jpg');
 late PickedFile image2 =
     PickedFile('/Users/zk/Mobile_PFA/assets/marrakech.jpg');
+
+
