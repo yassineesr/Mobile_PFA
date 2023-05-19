@@ -10,7 +10,7 @@ class Service {
   Future<http.Response> saveUser(
       String username, String email, String password) async {
     //create uri
-    var uri = Uri.parse("http://localhost:8080/comptes/ajouter");
+    var uri = Uri.parse("http://pda-env.eba-m3ac3t3q.eu-north-1.elasticbeanstalk.com/comptes/ajouter");
     //header
     Map<String, String> headers = {"Content-Type": "application/json"};
     //body
@@ -97,7 +97,7 @@ Future<List<dynamic>> fetchDataFromSpringBoot() async {
 }*/
 
 Future<List<dynamic>> fetchData() async {
-  final response = await http.get(Uri.parse('http://localhost:8080/comptes/liste'));
+  final response = await http.get(Uri.parse('http://pda-env.eba-m3ac3t3q.eu-north-1.elasticbeanstalk.com/comptes/liste'));
 
   print("fetch data 200: ");
   if (response.statusCode == 200) {
@@ -121,7 +121,7 @@ Future<http.Response> savePersonnalProfile(
       String nom, String prenom, String email_,int idc, String adr,String tel) async {
     //create uri
     print("hello from profile: "+adr);
-    var uri = Uri.parse("http://localhost:8080/profils/ajouter");
+    var uri = Uri.parse("http://pda-env.eba-m3ac3t3q.eu-north-1.elasticbeanstalk.com/profils/ajouter");
     //header
     Map<String, String> headers = {"Content-Type": "application/json"};
     //body
@@ -149,7 +149,7 @@ Future<http.Response> savePersonnalProfile(
   }
 
 Future<List<dynamic>> fetchDataPersoForm() async {
-  final response = await http.get(Uri.parse('http://localhost:8080/profils/liste'));
+  final response = await http.get(Uri.parse('http://pda-env.eba-m3ac3t3q.eu-north-1.elasticbeanstalk.com/profils/liste'));
 
   print("fetch data profile 200: ");
   if (response.statusCode == 200) {
