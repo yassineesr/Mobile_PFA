@@ -18,12 +18,88 @@ class PersonalSousPage extends StatefulWidget {
 }
 
 class _PersonalSousPageState extends State<PersonalSousPage> {
+
+   
+
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController nameController= TextEditingController();
   final TextEditingController lastNameController= TextEditingController();
+
+    void _profileform()  {
+    
+    print("sign: "+_addressController.text);
+    service.savePersonnalProfile(nameController.text,lastNameController.text,
+     _emailController.text,globalID ,_addressController.text,_phoneController.text);
+
+      Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => PersonalProfilePage()),
+  );
+
+
+  }
+
+void _profileInfo() async
+  { 
+    
+     print("hello 1");
+     await service.fetchDataPersoForm() ;
+    
+    print("hello 2");
+    print("doneeUser:");
+    //print(doneeUser);
+
+    print("hello");
+
+    print("liste compte 2::");
+    print(ListeProfils);
+
+    int a=0;
+      for (var user in ListeProfils) {
+        print("for profile ");
+        print(globalID);
+        print(user['email']);
+  if (user['idc'] == globalID) {
+          email_global = user['email'];
+          num_global=user['tel'];
+          adr_global=user['address'];
+          nom_global_pers=user['nom'];
+          prenom_global_pers=user['prenom'];
+          a=1;
+           //break;
+  }
+}
+   
+  }
+
+
+
+  void _changeGolbalvariable() {
+   
+
+      setState(() {
+        
+        email_global=_emailController.text;
+        num_global=_phoneController.text;
+        adr_global=_addressController.text;
+        nom_global_pers=lastNameController.text;
+        prenom_global_pers=nameController.text;
+      });
+      
+      setState(() {
+        _qrCodeData = "$nom_global_pers $prenom_global_pers $email_global $num_global $adr_global";
+      });
+    ScaffoldMessenger.of(context).showSnackBar(
+
+                                const SnackBar(content: Text("Valide"))
+
+                             );
+     FocusScope.of(context).requestFocus(FocusNode());//clavier goes down
+  }
   
   final image_picker=ImagePicker();
 
@@ -134,7 +210,12 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
               ),
 
               ElevatedButton(
-                onPressed: _changeGolbalvariable,
+                 
+                onPressed: () {
+    // Call the functions here
+                _profileform();
+                 _changeGolbalvariable();
+  },
                 child: Text('Valider'),
               ),
 
@@ -150,28 +231,7 @@ class _PersonalSousPageState extends State<PersonalSousPage> {
 
 
 
-  void _changeGolbalvariable() {
-   
-
-      setState(() {
-        
-        email_global=_emailController.text;
-        num_global=_phoneController.text;
-        adr_global=_addressController.text;
-        nom_global_pers=lastNameController.text;
-        prenom_global_pers=nameController.text;
-      });
-      
-      setState(() {
-        _qrCodeData = "$nom_global_pers $prenom_global_pers $email_global $num_global $adr_global";
-      });
-    ScaffoldMessenger.of(context).showSnackBar(
-
-                                const SnackBar(content: Text("Valide"))
-
-                             );
-     FocusScope.of(context).requestFocus(FocusNode());//clavier goes down
-  }
+  
 
 
   void uppload_image( ImageSource usersource) async {

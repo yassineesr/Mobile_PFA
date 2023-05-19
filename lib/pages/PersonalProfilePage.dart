@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/global_variables/global_variables.dart';
 import 'package:flutter_application_3/pages/HomePage.dart';
+import 'package:flutter_application_3/pages/LoginPage.dart';
 import 'package:flutter_application_3/sous_pages/Personal/PersonalDisplay.dart';
 import 'package:flutter_application_3/sous_pages/Personal/PersonalSousPage.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -25,6 +26,42 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
+
+
+void _profileInfo() async
+  { 
+    
+     print("hello profile 1");
+     await service.fetchDataPersoForm() ;
+    
+    
+    //print(doneeUser);
+
+    print("hello");
+
+    print("liste profils 2::");
+    print(ListeProfils);
+
+    int a=0;
+      for (var user in ListeProfils) {
+        print("for");
+        print(user['email']);
+  if (user['idc'] == globalID) {
+          email_global = user['email'];
+          num_global=user['tel'];
+          adr_global=user['address'];
+          nom_global_pers=user['nom'];
+          prenom_global_pers=user['prenom'];
+          a=1;
+           //break;
+  }
+}
+   
+  }
+
+  //_profileInfo();
+
+
 
   String _qrCodeData = "";
    bool showQRCode = false;
@@ -92,7 +129,7 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
                   onPressed: () {
 
 
-                    Future.delayed(Duration(milliseconds: 500), () {
+                    _profileInfo();Future.delayed(Duration(milliseconds: 500), () {
                              Navigator.pop(context);
                              Navigator.push(
                                context,
@@ -129,14 +166,16 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
                   GButton(
                   icon: Icons.list,
                   text: 'Display',
-                   onPressed: () {
-
+                   onPressed: () { 
+_profileInfo();
                      Future.delayed(Duration(milliseconds: 500), () {
                              Navigator.pop(context);
+                             
                              Navigator.push(
                                context,
                                MaterialPageRoute(builder: (context) => PersonalDisplay()),
                              );
+                           
                            });
                       
               },

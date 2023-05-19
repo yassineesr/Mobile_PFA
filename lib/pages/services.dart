@@ -117,5 +117,63 @@ Future<List<dynamic>> fetchData() async {
   }
 }
 
+Future<http.Response> savePersonnalProfile(
+      String nom, String prenom, String email_,int idc, String adr,String tel) async {
+    //create uri
+    print("hello from profile: "+adr);
+    var uri = Uri.parse("http://localhost:8080/profils/ajouter");
+    //header
+    Map<String, String> headers = {"Content-Type": "application/json"};
+    //body
+    Map data = {
+      'nom': '$nom',
+      'prenom': '$prenom',
+      'address': '$adr',
+      'idc':'$idc',
+      'tel':'$tel',
+      'email':'$email_',
+      'ddn':'1990-12-12',
+      'lien':'facebook',
+      
 
+    
+    };
+    //convert the above data into json
+    var body = json.encode(data);
+    var response = await http.post(uri, headers: headers, body: body);
+
+    //print the response body
+    print("${response.body}");
+
+    return response;
+  }
+
+Future<List<dynamic>> fetchDataPersoForm() async {
+  final response = await http.get(Uri.parse('http://localhost:8080/profils/liste'));
+
+  print("fetch data profile 200: ");
+  if (response.statusCode == 200) {
+    // Successful request
+    final data = jsonDecode(response.body);
+    print("fetch data: ");
+    print(data);
+    ListeProfils = data;
+  print("ListeComptesUsers ");
+  print(ListeComptesUsers);
+
+    return data;
+  } else {
+    // Error occurred
+    print("error data: ");
+    throw Exception('Failed to fetch data');
+  }
 }
+
+
+
+
+
+
+}//service } fermenate
+
+
