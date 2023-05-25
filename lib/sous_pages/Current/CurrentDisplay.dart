@@ -53,8 +53,8 @@ class _CurrentDisplayState extends State<CurrentDisplay> {
             ),
             SizedBox(height: 15.0),
             Text(
-              'Nom: $nom_global\n'
-              'Prenom: $prenom_global\n'
+              'Nom: $nom_global_pers\n'
+              'Prenom: $prenom_global_pers\n'
               'Email: $email_global_Cur\n'
               'Numero: $num_global_Cur\n'
               'latitude: $latitude_Cur\n'

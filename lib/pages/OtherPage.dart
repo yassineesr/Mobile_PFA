@@ -110,7 +110,7 @@ class _OtherPageState extends State<OtherPage> {
       String email = _emailController.text;
       String address = _addressController.text;
       setState(() {
-        _qrCodeData = "$nom_global $prenom_global $phoneNumber $email $address";
+        _qrCodeData = "$nom_global_pers $prenom_global_pers $phoneNumber $email $address";
       });
 
       setState(() {

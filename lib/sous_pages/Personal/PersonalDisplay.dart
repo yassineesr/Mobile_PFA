@@ -87,7 +87,7 @@ void _profileInfo() async
                     children: [
                     
                       Text(
-              'Personal Information:',
+              'Profile Information:',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,

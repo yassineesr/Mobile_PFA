@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
                 );
               },
               child: CircleAvatar(
-                child: Icon(Icons.contact_mail),
+                child: Icon(Icons.exit_to_app),
               ),
             ),
           ),
@@ -90,7 +90,7 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProfessionalProfilePage(),
+                          builder: (context) => QrScanner(),
                         ),
                       );
                     },
@@ -103,13 +103,13 @@ class HomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.account_circle,
+                            Icons.qr_code,
                             size: 80.0,
                             color: Colors.white,
                           ),
                           SizedBox(height: 16.0),
                           Text(
-                            'Professional Profile',
+                            'Qr Scanner',
                             style: TextStyle(
                               fontSize: 18.0,
                               color: Colors.white,
@@ -148,7 +148,7 @@ class HomePage extends StatelessWidget {
                           ),
                           SizedBox(height: 16.0),
                           Text(
-                            'Personal Profile',
+                            'Profile',
                             style: TextStyle(
                               fontSize: 18.0,
                               color: Colors.white,

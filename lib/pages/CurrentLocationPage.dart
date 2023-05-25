@@ -45,8 +45,8 @@ class _CurrentLocationPageState extends State<CurrentLocationPage> {
                 String prenom1 = "";
 
                 setState(() {
-                  nom1 = nom_global;
-                  prenom1 = prenom_global;
+                  nom1 = nom_global_pers;
+                  prenom1 = prenom_global_pers;
                   email = email_global_Cur;
                   phoneNumber = num_global_Cur;
                 });

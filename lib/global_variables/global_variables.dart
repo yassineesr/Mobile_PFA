@@ -17,10 +17,10 @@ String email_global_Profs = "yas@gmail.com";
 String num_global_Profs = "066666666";
 String adr_global_Profs = "casablanca";
 
-String email_global_Cur = "ismail@gmail.com";
-String num_global_Cur = "066666";
-String latitude_Cur = '';
-  String longitude_Cur = '';
+String email_global_Cur = "empty";
+String num_global_Cur = "empty";
+String latitude_Cur = 'empty';
+  String longitude_Cur = 'empty';
 
 String usrname="";
 String mailUser="";

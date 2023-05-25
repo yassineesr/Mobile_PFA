@@ -70,7 +70,7 @@ void _profileInfo() async
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Personal Profile'),
+          title: Text('Profile'),
           centerTitle: true,
          
         ),

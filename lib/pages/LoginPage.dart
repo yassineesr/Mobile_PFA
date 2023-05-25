@@ -50,6 +50,7 @@ Service service = Service();
   TextEditingController firstController = TextEditingController();
 TextEditingController emailController = TextEditingController();
 TextEditingController passController = TextEditingController();
+TextEditingController verfController = TextEditingController();
 TextEditingController loginMailController = TextEditingController();
 TextEditingController passLoginController = TextEditingController();
 //usrname=loginMailController.text;
@@ -101,14 +102,18 @@ class _LoginPageState extends State<LoginPage> {
  void _performSignup()  {
     
     print("sign");
+
+    if(passController.text==verfController.text){
     service.saveUser(firstController.text,
      emailController.text, passController.text);
+
+     
 
       Navigator.pushReplacement(
     context,
     MaterialPageRoute(builder: (context) => LoginPage()),
   );
-
+}
 
   }
 
@@ -222,6 +227,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
         SizedBox(height: 20),
         TextFormField(
+          controller: verfController,
           decoration: InputDecoration(
             labelText: 'Confirm Password',
             prefixIcon: Icon(Icons.lock),
