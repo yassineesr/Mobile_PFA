@@ -4,6 +4,7 @@ library my_globals;
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/loading.dart';
 import 'package:flutter_application_3/pages/HomePage.dart';
 import 'package:flutter_application_3/pages/LoginPage.dart';
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           color: Colors.green,
         ), colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green).copyWith(secondary: Colors.white),
       ),
-      home: LoginPage(),
+      home: Loading(),
     );
   }
 }
